@@ -1,0 +1,6 @@
+//Q1
+case1_sales
+| join kind=inner case1_menu on $left.product_id == $right.product_id
+| summarize total_amount = sum(price) by customer_id
+| order by customer_id asc
+

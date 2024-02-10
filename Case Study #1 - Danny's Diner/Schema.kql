@@ -1,0 +1,37 @@
+// Case Study #1 - Danny's Diner
+.execute database script <|
+.drop tables (case1_sales,case1_menu,case1_members) ifexists
+.create tables
+        case1_sales (customer_id: string, order_date: datetime, product_id: int),
+        case1_menu (product_id: int, product_name: string, price: int),
+        case1_members (customer_id: string, join_date: datetime)
+// Inserting data into case1_sales table
+.ingest inline into table case1_sales <| 
+A,2021-01-01,1
+A,2021-01-01,2
+A,2021-01-07,2
+A,2021-01-10,3
+A,2021-01-11,3
+A,2021-01-11,3
+B,2021-01-01,2
+B,2021-01-02,2
+B,2021-01-04,1
+B,2021-01-11,1
+B,2021-01-16,3
+B,2021-02-01,3
+C,2021-01-01,3
+C,2021-01-01,3
+C,2021-01-07,3
+// Inserting data into case1_menu table
+.ingest inline into table case1_menu <| 
+1,sushi,10
+2,curry,15
+3,ramen,12
+// Inserting data into case1_members table
+.ingest inline into table case1_members <| 
+A,2021-01-07
+B,2021-01-09
+// Alternative way to ingest using a URL
+//.ingest into table case1_sales (h"https://raw.githubusercontent.com/back1ply/m-code-SQL/main/8%20Week%20SQL%20Challenge/Case%20Study%20%231%20-%20Danny's%20Diner/sales.csv") with (format="csv",ignoreFirstRecord=true)
+//.ingest into table case1_menu (h"https://raw.githubusercontent.com/back1ply/m-code-SQL/main/8%20Week%20SQL%20Challenge/Case%20Study%20%231%20-%20Danny's%20Diner/menu.csv") with (format="csv",ignoreFirstRecord=true)
+//.ingest into table case1_members (h"https://raw.githubusercontent.com/back1ply/m-code-SQL/main/8%20Week%20SQL%20Challenge/Case%20Study%20%231%20-%20Danny's%20Diner/members.csv") with (format="csv",ignoreFirstRecord=true)
