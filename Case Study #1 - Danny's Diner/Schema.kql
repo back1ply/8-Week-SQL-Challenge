@@ -32,6 +32,6 @@ C,2021-01-07,3
 A,2021-01-07
 B,2021-01-09
 // Alternative way to ingest using a URL
-//.ingest into table case1_sales (h"https://raw.githubusercontent.com/back1ply/m-code-SQL/main/8%20Week%20SQL%20Challenge/Case%20Study%20%231%20-%20Danny's%20Diner/sales.csv") with (format="csv",ignoreFirstRecord=true)
-//.ingest into table case1_menu (h"https://raw.githubusercontent.com/back1ply/m-code-SQL/main/8%20Week%20SQL%20Challenge/Case%20Study%20%231%20-%20Danny's%20Diner/menu.csv") with (format="csv",ignoreFirstRecord=true)
-//.ingest into table case1_members (h"https://raw.githubusercontent.com/back1ply/m-code-SQL/main/8%20Week%20SQL%20Challenge/Case%20Study%20%231%20-%20Danny's%20Diner/members.csv") with (format="csv",ignoreFirstRecord=true)
+//.ingest into table case1_sales (h"https://raw.githubusercontent.com/back1ply/8-Week-SQL-Challenge/main/Case%20Study%20%231%20-%20Danny's%20Diner/sales.csv") with (format="csv",ignoreFirstRecord=true)
+//.ingest into table case1_menu (h"https://raw.githubusercontent.com/back1ply/8-Week-SQL-Challenge/main/Case%20Study%20%231%20-%20Danny's%20Diner/menu.csv") with (format="csv",ignoreFirstRecord=true)
+//.ingest into table case1_members (h"https://raw.githubusercontent.com/back1ply/8-Week-SQL-Challenge/main/Case%20Study%20%231%20-%20Danny's%20Diner/members.csv") with (format="csv",ignoreFirstRecord=true)
