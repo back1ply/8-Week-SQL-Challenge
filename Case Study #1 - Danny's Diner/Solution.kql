@@ -1,6 +1,21 @@
-//Q1
+// Q1
 case1_sales
 | join kind=inner case1_menu on $left.product_id == $right.product_id
 | summarize total_amount = sum(price) by customer_id
 | order by customer_id asc
 
+// Q2
+case1_sales
+| summarize visits = dcount(order_date) by customer_id
+
+// Q3
+case1_sales
+| join kind=inner case1_menu on $left.product_id == $right.product_id
+| summarize First_Purchased_Item = min(product_name), Purchased_on = min(order_date) by customer_id
+| order by customer_id asc
+
+// Q4
+case1_sales
+| join kind=inner case1_menu on $left.product_id == $right.product_id
+| summarize num_times = count() by product_name
+| top 1 by num_times desc

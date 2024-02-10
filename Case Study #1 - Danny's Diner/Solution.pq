@@ -1,5 +1,5 @@
 // 8 Week SQL Challenge
-// We just use Get from Folder as its easier and allow parameterization  for future proofing
+// We just use Get from Folder as its easier and allow parameterization for future proofing
 let
     Source = Folder.Files("C:\Users\desktoppc\Desktop\m-Code SQL\8 Week SQL Challenge")
 in
