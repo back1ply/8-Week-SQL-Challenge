@@ -19,3 +19,79 @@ case1_sales
 | join kind=inner case1_menu on $left.product_id == $right.product_id
 | summarize num_times = count() by product_name
 | top 1 by num_times desc
+
+// Q5
+let max_purchase_counts = case1_sales
+| join kind=inner (case1_menu) on $left.product_id == $right.product_id
+| summarize purchase_count=count() by customer_id, product_name
+| summarize max_purchase_count=max(purchase_count) by customer_id;
+case1_sales
+| join kind=inner (case1_menu) on $left.product_id == $right.product_id
+| summarize purchase_count=count() by customer_id, product_name
+| join kind=inner (max_purchase_counts) on $left.customer_id == $right.customer_id
+| where purchase_count == max_purchase_count
+| project customer_id, product_name, purchase_count
+| order by customer_id asc
+
+// Q6
+case1_sales
+| join kind=inner case1_members on $left.customer_id == $right.customer_id
+| where todatetime(order_date) > todatetime(join_date)
+| join kind=inner case1_menu on $left.product_id == $right.product_id
+| summarize first_purchase_after_membership = any(product_name) by customer_id
+| order by customer_id asc
+
+// Q7
+let sales_before_membership = 
+    case1_sales
+    | join kind=inner case1_members on customer_id
+    | where order_date < join_date
+    | summarize max_order_date=max(order_date) by customer_id;
+sales_before_membership
+| join kind=inner case1_sales on $left.customer_id == $right.customer_id and $left.max_order_date == $right.order_date
+| join kind=inner case1_menu on product_id
+| project customer_id, product_name, max_order_date
+
+// Q8
+let sales_before_membership = 
+    case1_sales
+    | join kind=inner case1_members on customer_id
+    | where order_date < join_date;
+sales_before_membership
+| join kind=inner case1_menu on product_id
+| summarize total_items=count(), total_amount_spent=sum(price) by customer_id
+
+// Q9
+case1_sales
+| join kind=inner case1_menu on product_id
+| extend points = iif(product_name == "sushi", price * 20, price * 10)
+| summarize total_points=sum(points) by customer_id
+
+// Q10
+let start_date = datetime(2021-01-01);
+let end_date = datetime(2021-01-31);
+let sales_with_points = 
+    case1_sales
+    | join kind=inner case1_menu on product_id
+    | join kind=inner case1_members on customer_id
+    | extend points = iif(order_date >= join_date and order_date < join_date + 7d, price * 20, iif(product_name == "sushi", price * 20, price * 10))
+    | where order_date >= start_date and order_date <= end_date and (customer_id == "A" or customer_id == "B");
+sales_with_points
+| summarize total_points=sum(points) by customer_id
+
+// Bonus Q1
+case1_sales
+| join kind=inner case1_menu on product_id
+| join kind=leftouter case1_members on customer_id
+| extend member = iif(isnull(join_date) or order_date < join_date, "N", "Y")
+| project customer_id, order_date, product_name, price, member
+| order by customer_id asc, order_date asc
+
+// Bonus Q2
+case1_sales
+| join kind=inner case1_menu on product_id
+| join kind=leftouter case1_members on customer_id
+| extend member = iif(order_date < join_date or isnull(join_date), 'N', 'Y')
+| order by customer_id asc, member asc, order_date asc
+| extend ranking = iif(member == 'Y', row_cumsum(1, customer_id != prev(customer_id) or member != prev(member)), int(null))
+| project customer_id, order_date, product_name, price, member, ranking
