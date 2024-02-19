@@ -8,7 +8,7 @@ Thanks for Google & ChatGPT/Copilot for help in project.
 
 ## ERD
 
-![(https://dbdiagram.io/d/Dannys-Diner-608d07e4b29a09603d12edbd?utm_source=dbdiagram_embed&utm_medium=bottom_open)](ERD-C1.png)
+![ERD Diagram](ERD-C1.png)([https://dbdiagram.io/d/Dannys-Diner-608d07e4b29a09603d12edbd?utm_source=dbdiagram_embed&utm_medium=bottom_open](https://dbdiagram.io/d/Dannys-Diner-608d07e4b29a09603d12edbd?utm_source=dbdiagram_embed&utm_medium=bottom_open))
 
 ---
 
