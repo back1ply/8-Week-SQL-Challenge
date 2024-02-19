@@ -8,7 +8,7 @@ Thanks for Google & ChatGPT/Copilot for help in project.
 
 ## ERD
 
-![ERD Diagram](ERD-C2.png)(<https://dbdiagram.io/d/5f3e085ccf48a141ff558487/?utm_source=dbdiagram_embed&utm_medium=bottom_open>)
+[![ERD Diagram](ERD-C2.png)](https://dbdiagram.io/d/5f3e085ccf48a141ff558487/?utm_source=dbdiagram_embed&utm_medium=bottom_open)
 
 ---
 
