@@ -64,3 +64,10 @@
 10|Salami
 11|Tomatoes
 12|Tomato Sauce
+// Alternative way to ingest using a URL
+//.ingest into table case2_runners (h"") with (format="csv",ignoreFirstRecord=true)
+//.ingest into table case2_customer_orders (h"") with (format="csv",ignoreFirstRecord=true)
+//.ingest into table case2_runner_orders (h"") with (format="csv",ignoreFirstRecord=true)
+//.ingest into table case2_pizza_names (h"") with (format="csv",ignoreFirstRecord=true)
+//.ingest into table case2_pizza_recipes (h"") with (format="csv",ignoreFirstRecord=true)
+//.ingest into table case2_pizza_toppings (h"") with (format="csv",ignoreFirstRecord=true)
