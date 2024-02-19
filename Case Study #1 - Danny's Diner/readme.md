@@ -8,7 +8,7 @@ Thanks for Google & ChatGPT/Copilot for help in project.
 
 ## ERD
 
-![](assets/20240219_022503_ERD-C1.png)
+![](ERD-C1.png)
 
 ## Challenge Questions & Answers
 
